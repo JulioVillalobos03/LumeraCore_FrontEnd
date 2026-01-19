@@ -1,0 +1,172 @@
+{
+    "app": {
+        "name": "Lumera Core"
+    },
+    "auth": {
+        "loginTitle": "Iniciar sesión",
+        "loginButton": "Entrar",
+        "loggingIn": "Entrando...",
+        "email": "Correo",
+        "password": "Contraseña",
+        "noAccount": "¿No tienes cuenta?",
+        "createOne": "Crear cuenta",
+        "registerTitle": "Crear cuenta",
+        "registerSubtitle": "Crea tu cuenta para comenzar",
+        "registerButton": "Registrarse",
+        "registering": "Creando cuenta...",
+        "name": "Nombre",
+        "haveAccount": "¿Ya tienes cuenta?",
+        "login": "Iniciar sesión"
+    },
+    "onboarding": {
+        "title": "Configura tu empresa",
+        "subtitle": "Crea tu empresa para comenzar a usar Lumera",
+        "companyName": "Nombre de la empresa",
+        "companyPlaceholder": "Ej. Mi Empresa",
+        "createButton": "Crear empresa",
+        "creating": "Creando empresa...",
+        "successTitle": "Empresa creada",
+        "successMessage": "Tu empresa se creó correctamente"
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "employees": "Empleados",
+        "users": "Usuarios",
+        "companies": "Empresas",
+        "products": "Productos"
+    },
+    "profile": {
+        "title": "Perfil",
+        "name": "Nombre",
+        "email": "Correo",
+        "company": "Empresa",
+        "role": "Rol",
+        "close": "Cerrar",
+        "logout": "Cerrar sesión"
+    },
+    "errors": {
+        "AUTH_INVALID_CREDENTIALS": "Correo o contraseña incorrectos",
+        "AUTH_USER_INACTIVE": "El usuario está inactivo",
+        "AUTH_TOKEN_INVALID": "Sesión inválida o expirada",
+        "AUTH_EMAIL_ALREADY_EXISTS": "El correo ya está registrado",
+        "AUTH_INVALID_INPUT": "Los datos ingresados no son válidos",
+        "INTERNAL_ERROR": "Ocurrió un error interno del servidor",
+        "GENERIC": "Ocurrió un error inesperado",
+        "labelRequired": "La etiqueta es obligatoria.",
+        "keyRequired": "La clave es obligatoria.",
+        "selectNeedsOptions": "El campo tipo select requiere al menos una opción.",
+        "optionDuplicate": "Esa opción ya existe.",
+        "createFailed": "No se pudo crear el campo."
+    },
+    "common": {
+        "loading": "Cargando...",
+        "search": "Buscar",
+        "back": "Volver",
+        "cancel": "Cancelar",
+        "saving": "Guardando",
+        "save": "Guardar"
+    },
+    "employees": {
+        "title": "Empleados",
+        "subtitle": "Gestiona los empleados de tu empresa",
+        "create": "Crear empleado",
+        "empty": "No hay empleados registrados.",
+        "editTitle": "Editar empleado",
+        "columns": {
+            "name": "Nombre",
+            "email": "Correo",
+            "position": "Puesto",
+            "department": "Departamento",
+            "status": "Estado",
+            "actions": "Acciones",
+            "phone": "Teléfono"
+        },
+        "actions": {
+            "edit": "Editar",
+            "activate": "Activar",
+            "deactivate": "Desactivar"
+        },
+        "status": {
+            "active": "Activo",
+            "inactive": "Inactivo"
+        },
+        "form": {
+            "firstName": "Nombre(s)",
+            "lastName": "Apellidos",
+            "email": "Correo",
+            "phone": "Teléfono",
+            "position": "Puesto",
+            "department": "Departamento",
+            "cancel": "Cancelar",
+            "save": "Guardar",
+            "saving": "Guardando..."
+        },
+        "detail": {
+            "subtitle": "Información del empleado"
+        },
+        "customFieldsEmpty": "Este empleado no tiene campos personalizados"
+    },
+    "customFields": {
+        "title": "Campos personalizados",
+        "empty": "Aún no hay campos personalizados.",
+        "create": "Crear campo",
+        "createTitle": "Crear campo personalizado",
+        "entity": "Entidad",
+        "types": {
+            "text": "Texto",
+            "number": "Número",
+            "date": "Fecha",
+            "boolean": "Booleano",
+            "select": "Select"
+        },
+        "form": {
+            "label": "Etiqueta",
+            "key": "Clave",
+            "keyHint": "Ej: Tipo de Contrato, curp, rfc",
+            "type": "Tipo",
+            "required": "Requerido",
+            "options": "Opciones",
+            "optionsHint": "Agrega las opciones para el campo tipo select.",
+            "optionPlaceholder": "Ej: Planta",
+            "addOption": "Agregar",
+            "noOptions": "Aún no has agregado opciones.",
+            "save": "Guardar",
+            "saving": "Guardando..."
+        }
+    },
+    "settings": {
+        "title": "Configuración",
+        "customFields": {
+            "title": "Campos personalizados",
+            "employees": "Campos de empleados",
+            "clients": "Campos de clientes",
+            "products": "Campos de productos"
+        }
+    },
+    "products": {
+        "title": "Productos",
+        "subtitle": "Gestión y control de productos",
+        "create": "Crear producto",
+        "edit": "Editar producto",
+        "empty": "No hay productos registrados",
+        "columns": {
+            "name": "Nombre",
+            "price": "Precio",
+            "status": "Estado",
+            "actions": "Acciones"
+        },
+        "status": {
+            "active": "Activo",
+            "inactive": "Inactivo"
+        },
+        "actions": {
+            "edit": "Editar"
+        },
+        "form": {
+            "name": "Nombre del producto",
+            "price": "Precio",
+            "description": "Descripción"
+        },
+        "customFields": "Campos personalizados"
+    }
+}

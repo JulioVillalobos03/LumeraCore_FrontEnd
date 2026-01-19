@@ -1,0 +1,172 @@
+{
+    "app": {
+        "name": "Lumera Core"
+    },
+    "auth": {
+        "loginTitle": "Log in",
+        "loginButton": "Log in",
+        "loggingIn": "Logging in...",
+        "email": "Email",
+        "password": "Password",
+        "noAccount": "Don’t have an account?",
+        "createOne": "Create one",
+        "registerTitle": "Create account",
+        "registerSubtitle": "Create your account to get started",
+        "registerButton": "Sign up",
+        "registering": "Creating account...",
+        "name": "Name",
+        "haveAccount": "Already have an account?",
+        "login": "Log in"
+    },
+    "onboarding": {
+        "title": "Set up your company",
+        "subtitle": "Create your company to start using Lumera",
+        "companyName": "Company name",
+        "companyPlaceholder": "e.g. My Company",
+        "createButton": "Create company",
+        "creating": "Creating company...",
+        "successTitle": "Company created",
+        "successMessage": "Your company was created successfully"
+    },
+    "nav": {
+        "dashboard": "Dashboard",
+        "employees": "Employees",
+        "users": "Users",
+        "companies": "Companies",
+        "products": "Products"
+    },
+    "profile": {
+        "title": "Profile",
+        "name": "Name",
+        "email": "Email",
+        "company": "Company",
+        "role": "Role",
+        "close": "Close",
+        "logout": "Logout"
+    },
+    "errors": {
+        "AUTH_INVALID_CREDENTIALS": "Invalid email or password",
+        "AUTH_USER_INACTIVE": "User is inactive",
+        "AUTH_TOKEN_INVALID": "Invalid or expired session",
+        "AUTH_EMAIL_ALREADY_EXISTS": "Email already exists",
+        "AUTH_INVALID_INPUT": "Invalid input data",
+        "INTERNAL_ERROR": "Internal server error",
+        "GENERIC": "An unexpected error occurred",
+        "labelRequired": "Label is required.",
+        "keyRequired": "Key is required.",
+        "selectNeedsOptions": "Select fields require at least one option.",
+        "optionDuplicate": "That option already exists.",
+        "createFailed": "Could not create the field."
+    },
+    "common": {
+        "loading": "Loading...",
+        "search": "Search",
+        "back": "Back",
+        "cancel": "Cancel",
+        "save": "Save",
+        "saving": "Saving"
+    },
+    "employees": {
+        "title": "Employees",
+        "subtitle": "Manage your company employees",
+        "create": "Create employee",
+        "empty": "No employees found.",
+        "editTitle": "Edit employee",
+        "columns": {
+            "name": "Name",
+            "email": "Email",
+            "position": "Position",
+            "department": "Department",
+            "status": "Status",
+            "actions": "Actions",
+            "phone": "Phone"
+        },
+        "actions": {
+            "activate": "Activate",
+            "deactivate": "Deactivate"
+        },
+        "status": {
+            "edit": "Edit",
+            "active": "Active",
+            "inactive": "inactive"
+        },
+        "form": {
+            "firstName": "First name",
+            "lastName": "Last name",
+            "email": "Email",
+            "phone": "Phone",
+            "position": "Position",
+            "department": "Department",
+            "cancel": "Cancel",
+            "save": "Save",
+            "saving": "Saving..."
+        }
+    },
+    "detail": {
+        "subtitle": "Employee information"
+    },
+    "customFieldsEmpty": "This employee has no custom fields",
+    "customFields": {
+        "title": "Custom fields",
+        "empty": "No custom fields yet.",
+        "create": "Create field",
+        "createTitle": "Create custom field",
+        "entity": "Entity",
+        "types": {
+            "text": "Text",
+            "number": "Number",
+            "date": "Date",
+            "boolean": "Boolean",
+            "select": "Select"
+        },
+        "form": {
+            "label": "Label",
+            "key": "Key",
+            "keyHint": "e.g. Contract Type, curp, rfc",
+            "type": "Type",
+            "required": "Required",
+            "options": "Options",
+            "optionsHint": "Add options for select type fields.",
+            "optionPlaceholder": "e.g. Full-time",
+            "addOption": "Add",
+            "noOptions": "No options added yet.",
+            "save": "Save",
+            "saving": "Saving..."
+        }
+    },
+    "settings": {
+        "title": "Settings",
+        "customFields": {
+            "title": "Custom fields",
+            "employees": "Employee fields",
+            "clients": "Client fields",
+            "products": "Product fields"
+        }
+    },
+    "products": {
+        "title": "Products",
+        "subtitle": "Product management",
+        "create": "Create product",
+        "edit": "Edit product",
+        "empty": "No products found",
+        "columns": {
+            "name": "Name",
+            "price": "Price",
+            "status": "Status",
+            "actions": "Actions"
+        },
+        "status": {
+            "active": "Active",
+            "inactive": "Inactive"
+        },
+        "actions": {
+            "edit": "Edit"
+        },
+        "form": {
+            "name": "Product name",
+            "price": "Price",
+            "description": "Description"
+        },
+        "customFields": "Custom fields"
+    }
+}

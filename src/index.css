@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+
+:root {
+  /* Brand */
+  --color-primary: #C1121F;   /* Rojo Crimson */
+  --color-accent: #FFD500;    /* Amarillo Neón */
+
+  /* Blues */
+  --blue-dark: #002D40;       /* Azul Petróleo Profundo */
+  --blue-muted: #1B2730;      /* Azul Grisáceo Suave */
+  --blue-soft: #5DA3C4;       /* Azul Complementario Suave */
+
+  /* Neutrals */
+  --bg-app: #F2F4F6;          /* Fondo general */
+  --bg-surface: #FFFFFF;     /* Cards / panels */
+
+  --text-primary: #0F1417;    /* Negro Suave */
+  --text-secondary: #1B2730;
+
+  --grid-line: rgba(93, 163, 196, 0.15); /* azul suave */
+  --grid-size: 60px;
+
+  /* Fonts */
+  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Space Grotesk', system-ui, sans-serif;
+}
+
+
+html,
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: var(--font-body)
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+p {
+  color: var(--font-body);
+}
+
+/* ===============================
+   Animated Grid Background
+   =============================== */
+
+.animated-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: var(--grid-size) var(--grid-size);
+  }
+}
