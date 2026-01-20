@@ -11,6 +11,10 @@ import EmployeesPage from "../modules/employees/EmployeesPage";
 import EmployeeDetailPage from "../modules/employees/EmployeeDetailPage";
 import CustomFieldsPage from "../modules/custom-fields/CustomFieldsPage";
 import ProductsPage from "../modules/products/ProductsPage";
+import InventoryPage from "../modules/inventory/InventoryPage";
+import ProductDetailPage from "../modules/products/ProductDetailPage";
+import InventoryMovementsPage from "../modules/inventory/InventoryMovementsPage";
+import InventoryDetailPage from "../modules/inventory/InventoryDetailPage";
 
 export default function AppRoutes() {
   return (
@@ -54,6 +58,10 @@ export default function AppRoutes() {
           <Route path="employees" element={<EmployeesPage />} />
           <Route path="employees/:id" element={<EmployeeDetailPage />} />
           <Route path="products" element={<ProductsPage />} />
+          <Route path="products/:id" element={<ProductDetailPage />} />
+          <Route path="inventory" element={<InventoryPage />} />
+          <Route path="inventory/:id" element={<InventoryDetailPage />} />
+          <Route path="inventory/movements" element={<InventoryMovementsPage />} />
           
           <Route
             path="settings/custom-fields/employees"
@@ -68,6 +76,11 @@ export default function AppRoutes() {
           <Route
             path="settings/custom-fields/products"
             element={<CustomFieldsPage entity="products" />}
+          />
+
+          <Route
+            path="settings/custom-fields/inventory"
+            element={<CustomFieldsPage entity="inventory" />}
           />
         </Route>
 

@@ -16,8 +16,8 @@ export default function Sidebar({ open, onClose }: Props) {
   // 🔹 Settings accordion state
   const isSettingsRoute = pathname.startsWith("/app/settings");
   const [settingsOpen, setSettingsOpen] = useState(isSettingsRoute);
+  const [inventoryOpen, setInventoryOpen] = useState(false);
 
-  // 🔹 Mantener abierto si navega a settings
 
 
   return (
@@ -53,7 +53,7 @@ export default function Sidebar({ open, onClose }: Props) {
         {/* Navigation */}
         <nav className="flex-1 px-4 py-6 space-y-6">
           {/* MAIN */}
-          <div className="space-y-1">
+          <div className="space-y-1 text-xs tracking-wide transition">
             <Item
               to="/app"
               label={t("nav.dashboard")}
@@ -65,18 +65,61 @@ export default function Sidebar({ open, onClose }: Props) {
               label={t("nav.employees")}
               active={pathname.startsWith("/app/employees")}
             />
-            <Item
-              to="/app/products"
-              label={t("nav.products")}
-              active={pathname.startsWith("/app/products")}
-            />
-            <Item
-              to="/app/inventory"
-              label={t("nav.inventary")}
-              active={pathname.startsWith("/app/inventory")}
-            />
+
 
           </div>
+
+          <div>
+            {/* Header clickable */}
+            <button
+              onClick={() => setInventoryOpen((v) => !v)}
+              className={clsx(
+                "w-full flex items-center justify-between px-4 py-2 text-xs uppercase tracking-wide transition",
+                "text-white hover:text-white/60"
+              )}
+            >
+              <span>{t("nav.inventory")}</span>
+              <span
+                className={clsx(
+                  "transition-transform",
+                  inventoryOpen ? "rotate-180" : "rotate-0"
+                )}
+              >
+                ▾
+              </span>
+            </button>
+
+            {/* Collapsible content */}
+            <div
+              className={clsx(
+                "mt-1 space-y-1 overflow-hidden transition-all duration-300",
+                inventoryOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+              )}
+            >
+              <Item
+                to="/app/products"
+                label={t("nav.products")}
+                active={pathname.startsWith("/app/products")}
+                nested
+              />
+
+              <Item
+                to="/app/inventory"
+                label={t("inventory.title")}
+                active={pathname === "/app/inventory"}
+                nested
+              />
+
+
+              <Item
+                to="/app/inventory/movements"
+                label={t("inventory.movements.short_title")}
+                active={pathname.startsWith("/app/inventory/movements")}
+                nested
+              />
+            </div>
+          </div>
+
 
           {/* SETTINGS */}
           <div>
@@ -129,9 +172,16 @@ export default function Sidebar({ open, onClose }: Props) {
                 active={pathname.startsWith("/app/settings/custom-fields/products")}
                 nested
               />
+              <Item
+                to="/app/settings/custom-fields/inventory"
+                label={t("settings.customFields.inventory")}
+                active={pathname.startsWith("/app/settings/custom-fields/inventory")}
+                nested
+              />
 
             </div>
           </div>
+
         </nav>
 
         {/* Footer */}

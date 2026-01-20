@@ -33,7 +33,8 @@
         "employees": "Employees",
         "users": "Users",
         "companies": "Companies",
-        "products": "Products"
+        "products": "Products",
+        "inventory": "Inventory"
     },
     "profile": {
         "title": "Profile",
@@ -64,7 +65,8 @@
         "back": "Back",
         "cancel": "Cancel",
         "save": "Save",
-        "saving": "Saving"
+        "saving": "Saving",
+        "close": "Close"
     },
     "employees": {
         "title": "Employees",
@@ -140,7 +142,8 @@
             "title": "Custom fields",
             "employees": "Employee fields",
             "clients": "Client fields",
-            "products": "Product fields"
+            "products": "Product fields",
+            "inventory": "Inventory fields"
         }
     },
     "products": {
@@ -168,5 +171,44 @@
             "description": "Description"
         },
         "customFields": "Custom fields"
+    },
+    "inventory": {
+        "title": "Inventory",
+        "subtitle": "Stock control and adjustments",
+        "empty": "No products in inventory",
+        "columns": {
+            "sku": "SKU",
+            "product": "Product",
+            "stock": "Stock"
+        },
+        "stock": {
+            "empty": "Out of stock"
+        },
+        "adjust": {
+            "title": "Adjust inventory",
+            "button": "Adjust inventory",
+            "selectProduct": "Select a product",
+            "in": "Stock entry",
+            "out": "Stock removal",
+            "notes": "Notes (optional)"
+        },
+        "movements": {
+            "short_title": "Inventory movements",
+            "title": "Inventory movements",
+            "subtitle": "Stock entry and exit history",
+            "empty": "No movements recorded",
+            "columns": {
+                "date": "Date",
+                "product": "Product",
+                "type": "Type",
+                "quantity": "Quantity",
+                "user": "User",
+                "notes": "Notes"
+            },
+            "types": {
+                "in": "Stock in",
+                "out": "Stock out"
+            }
+        }
     }
 }

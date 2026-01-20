@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getActiveCompany, getToken } from "../auth/auth.storage";
+import { clearSession, getActiveCompany, getToken } from "../auth/auth.storage";
 
 
 export const api = axios.create({
@@ -17,10 +17,28 @@ api.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
-  // ✅ necesario por tu companyMiddleware
   if (company?.company_id) {
     config.headers["x-company-id"] = company.company_id;
   }
 
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const status = error?.response?.status;
+
+    if (status === 401 || status === 403) {
+      // 🔥 token inválido / expirado
+      clearSession();
+
+      // Evitar redirect infinito
+      if (!window.location.pathname.includes("/login")) {
+        window.location.href = "/login";
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
