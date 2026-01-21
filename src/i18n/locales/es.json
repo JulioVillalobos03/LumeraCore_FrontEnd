@@ -2,6 +2,23 @@
     "app": {
         "name": "Lumera Core"
     },
+    "dashboard": {
+        "welcome": "Bienvenido",
+        "subtitle": "Panel general de la empresa {{company}}",
+        "stats": {
+            "employees": "Empleados",
+            "clients": "Clientes",
+            "products": "Productos",
+            "activeUsers": "Usuarios activos"
+        },
+        "quickActions": "Acciones rápidas",
+        "actions": {
+            "employees": "Gestionar empleados",
+            "clients": "Ver clientes",
+            "products": "Administrar productos",
+            "users": "Usuarios del sistema"
+        }
+    },
     "auth": {
         "loginTitle": "Iniciar sesión",
         "loginButton": "Entrar",
@@ -16,7 +33,11 @@
         "registering": "Creando cuenta...",
         "name": "Nombre",
         "haveAccount": "¿Ya tienes cuenta?",
-        "login": "Iniciar sesión"
+        "login": "Iniciar sesión",
+        "continueWith": "O continúa con",
+        "google": "Google",
+        "comingSoon": "(próximamente)",
+        "loginSubtitle": "Ingresa tus credenciales para acceder a tu cuenta"
     },
     "onboarding": {
         "title": "Configura tu empresa",
@@ -37,7 +58,8 @@
         "inventory": "Inventario",
         "roles": "Roles",
         "permissions": "Permisos",
-        "access": "Acceso"
+        "access": "Acceso",
+        "clients": "Clientes"
     },
     "profile": {
         "title": "Perfil",
@@ -69,7 +91,9 @@
         "cancel": "Cancelar",
         "saving": "Guardando",
         "save": "Guardar",
-        "close": "Cerrar"
+        "close": "Cerrar",
+        "actions": "Acciones",
+        "edit": "Editar"
     },
     "employees": {
         "title": "Empleados",
@@ -294,5 +318,100 @@
         "errors": {
             "createFailed": "No se pudo crear el permiso."
         }
+    },
+    "clients": {
+        "title": "Clientes",
+        "subtitle": "Gestiona los clientes de tu empresa",
+        "create": "Crear cliente",
+        "detail": {
+            "subtitle": "Información del cliente"
+        },
+        "columns": {
+            "name": "Nombre",
+            "email": "Correo",
+            "phone": "Teléfono",
+            "taxId": "RFC",
+            "address": "Dirección",
+            "status": "Estado"
+        },
+        "status": {
+            "active": "Activo",
+            "inactive": "Inactivo"
+        },
+        "customFieldsEmpty": "Este cliente no tiene campos personalizados"
+    },
+    "landing": {
+        "hero": {
+            "titleLine1": "Gestiona tu empresa",
+            "titleHighlight": "con claridad y control",
+            "subtitle": "Lumera es un ERP moderno que centraliza empleados, clientes, inventario y operaciones en una sola plataforma, limpia y escalable.",
+            "ctaPrimary": "Comenzar",
+            "ctaSecondary": "Ver más"
+        },
+        "features": {
+            "title": "Todo lo que tu negocio necesita",
+            "subtitle": "Modular, flexible y diseñado para adaptarse a tu empresa — no al revés.",
+            "items": {
+                "employees": {
+                    "title": "Gestión de empleados",
+                    "description": "Centraliza datos, campos personalizados, roles y control de estatus."
+                },
+                "clients": {
+                    "title": "Clientes y relaciones",
+                    "description": "Mantén la información de tus clientes estructurada y siempre disponible."
+                },
+                "inventory": {
+                    "title": "Inventario y productos",
+                    "description": "Controla productos, movimientos y disponibilidad de manera simple."
+                },
+                "access": {
+                    "title": "Roles y permisos",
+                    "description": "Control de acceso granular por empresa y por usuario."
+                },
+                "customFields": {
+                    "title": "Campos personalizados",
+                    "description": "Adapta el sistema con campos dinámicos según tu operación."
+                },
+                "scalable": {
+                    "title": "Arquitectura escalable",
+                    "description": "Diseñado para crecer contigo sin fricción ni re-trabajo."
+                }
+            }
+        },
+        "how": {
+            "title": "Cómo funciona",
+            "subtitle": "Una base sólida para operar mejor desde el día uno.",
+            "steps": {
+                "company": {
+                    "title": "Crea tu empresa",
+                    "description": "Configura tu organización en minutos."
+                },
+                "modules": {
+                    "title": "Configura tus módulos",
+                    "description": "Activa lo que necesitas y personaliza tus campos."
+                },
+                "grow": {
+                    "title": "Gestiona y escala",
+                    "description": "Opera con claridad y crece con confianza."
+                }
+            }
+        },
+        "cta": {
+            "title": "Empieza a construir una mejor operación hoy",
+            "subtitle": "Lumera crece con tu empresa — desde el primer día.",
+            "button": "Crear cuenta"
+        }
+    },
+    "footer": {
+        "description": "Lumera Core es un ERP moderno diseñado para centralizar la gestión empresarial con claridad, control y escalabilidad.",
+        "product": "Producto",
+        "features": "Funcionalidades",
+        "security": "Seguridad",
+        "roadmap": "Roadmap",
+        "company": "Compañía",
+        "about": "Acerca de",
+        "privacy": "Privacidad",
+        "terms": "Términos",
+        "madeWith": "Construido con enfoque en producto y experiencia"
     }
 }

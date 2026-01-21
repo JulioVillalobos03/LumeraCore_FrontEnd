@@ -2,7 +2,9 @@ import clsx from "clsx";
 import { Link, useLocation } from "react-router-dom";
 import LumeraLogo from "../../assets/logos/lumera_core_white.svg";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+
+type OpenMenu = "inventory" | "access" | "settings" | null;
 
 interface Props {
   open: boolean;
@@ -13,24 +15,38 @@ export default function Sidebar({ open, onClose }: Props) {
   const { pathname } = useLocation();
   const { t } = useTranslation();
 
-  // 🔹 Accordions
-  const isSettingsRoute = pathname.startsWith("/app/settings");
-  const isInventoryRoute = pathname.startsWith("/app/inventory") || pathname.startsWith("/app/products");
-  const isAccessRoute =
-    pathname.startsWith("/app/roles") ||
-    pathname.startsWith("/app/permissions");
+  const currentYear = new Date().getFullYear();
 
-  const [settingsOpen, setSettingsOpen] = useState(isSettingsRoute);
-  const [inventoryOpen, setInventoryOpen] = useState(isInventoryRoute);
-  const [accessOpen, setAccessOpen] = useState(isAccessRoute);
+  /* 🔹 Determinar menú activo */
+  const routeMenu: OpenMenu = useMemo(() => {
+    if (
+      pathname.startsWith("/app/inventory") ||
+      pathname.startsWith("/app/products")
+    ) return "inventory";
+
+    if (
+      pathname.startsWith("/app/roles") ||
+      pathname.startsWith("/app/permissions")
+    ) return "access";
+
+    if (pathname.startsWith("/app/settings")) return "settings";
+
+    return null;
+  }, [pathname]);
+
+  const [openMenu, setOpenMenu] = useState<OpenMenu>(routeMenu);
+
+  const toggleMenu = (menu: OpenMenu) => {
+    setOpenMenu((current) => (current === menu ? null : menu));
+  };
 
   return (
     <>
-      {/* Overlay móvil */}
+      {/* Overlay SOLO EN MOBILE */}
       <div
         onClick={onClose}
         className={clsx(
-          "fixed inset-0 bg-black/40 z-30 md:hidden transition-opacity",
+          "fixed inset-0 bg-black/40 z-30 lg:hidden transition-opacity",
           open ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       />
@@ -38,13 +54,17 @@ export default function Sidebar({ open, onClose }: Props) {
       <aside
         className={clsx(
           `
-          fixed md:static inset-y-0 left-0 z-40
-          w-64 bg-(--blue-dark) text-white
+          bg-(--blue-dark) text-white
           flex flex-col
-          transform transition-transform duration-300
+          transition-all duration-300
+          z-40
           `,
-          open ? "translate-x-0" : "-translate-x-full",
-          "md:translate-x-0"
+          // MOBILE
+          "fixed inset-y-0 left-0 w-64 lg:relative",
+          // DESKTOP
+          open ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+          // DESKTOP WIDTH CONTROL
+          open ? "lg:w-64" : "lg:w-0 overflow-hidden"
         )}
       >
         {/* Logo */}
@@ -57,7 +77,7 @@ export default function Sidebar({ open, onClose }: Props) {
         {/* Navigation */}
         <nav className="flex-1 px-4 py-6 space-y-6">
           {/* MAIN */}
-          <div className="space-y-1 text-xs tracking-wide transition">
+          <div className="space-y-1 text-xs tracking-wide">
             <Item
               to="/app"
               label={t("nav.dashboard")}
@@ -75,173 +95,156 @@ export default function Sidebar({ open, onClose }: Props) {
               label={t("nav.users")}
               active={pathname.startsWith("/app/users")}
             />
+
+            <Item
+              to="/app/clients"
+              label={t("nav.clients")}
+              active={pathname.startsWith("/app/clients")}
+            />
           </div>
 
           {/* INVENTORY */}
-          <div>
-            <button
-              onClick={() => setInventoryOpen((v) => !v)}
-              className={clsx(
-                "w-full flex items-center justify-between px-4 py-2 text-xs uppercase tracking-wide transition",
-                "text-white hover:text-white/60"
-              )}
-            >
-              <span>{t("nav.inventory")}</span>
-              <span
-                className={clsx(
-                  "transition-transform",
-                  inventoryOpen ? "rotate-180" : "rotate-0"
-                )}
-              >
-                ▾
-              </span>
-            </button>
+          <Accordion
+            title={t("nav.inventory")}
+            open={openMenu === "inventory"}
+            onToggle={() => toggleMenu("inventory")}
+          >
+            <Item
+              to="/app/products"
+              label={t("nav.products")}
+              active={pathname.startsWith("/app/products")}
+              nested
+            />
+            <Item
+              to="/app/inventory"
+              label={t("inventory.title")}
+              active={pathname === "/app/inventory"}
+              nested
+            />
+            <Item
+              to="/app/inventory/movements"
+              label={t("inventory.movements.short_title")}
+              active={pathname.startsWith("/app/inventory/movements")}
+              nested
+            />
+          </Accordion>
 
-            <div
-              className={clsx(
-                "mt-1 space-y-1 overflow-hidden transition-all duration-300",
-                inventoryOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-              )}
-            >
-              <Item
-                to="/app/products"
-                label={t("nav.products")}
-                active={pathname.startsWith("/app/products")}
-                nested
-              />
-
-              <Item
-                to="/app/inventory"
-                label={t("inventory.title")}
-                active={pathname === "/app/inventory"}
-                nested
-              />
-
-              <Item
-                to="/app/inventory/movements"
-                label={t("inventory.movements.short_title")}
-                active={pathname.startsWith("/app/inventory/movements")}
-                nested
-              />
-            </div>
-          </div>
-
-          {/* ACCESS (Roles & Permissions) */}
-          <div>
-            <button
-              onClick={() => setAccessOpen((v) => !v)}
-              className={clsx(
-                "w-full flex items-center justify-between px-4 py-2 text-xs uppercase tracking-wide transition",
-                "text-white hover:text-white/60"
-              )}
-            >
-              <span>{t("nav.access")}</span>
-              <span
-                className={clsx(
-                  "transition-transform",
-                  accessOpen ? "rotate-180" : "rotate-0"
-                )}
-              >
-                ▾
-              </span>
-            </button>
-
-            <div
-              className={clsx(
-                "mt-1 space-y-1 overflow-hidden transition-all duration-300",
-                accessOpen ? "max-h-32 opacity-100" : "max-h-0 opacity-0"
-              )}
-            >
-              <Item
-                to="/app/roles"
-                label={t("nav.roles")}
-                active={pathname.startsWith("/app/roles")}
-                nested
-              />
-
-              <Item
-                to="/app/permissions"
-                label={t("nav.permissions")}
-                active={pathname.startsWith("/app/permissions")}
-                nested
-              />
-            </div>
-          </div>
+          {/* ACCESS */}
+          <Accordion
+            title={t("nav.access")}
+            open={openMenu === "access"}
+            onToggle={() => toggleMenu("access")}
+          >
+            <Item
+              to="/app/roles"
+              label={t("nav.roles")}
+              active={pathname.startsWith("/app/roles")}
+              nested
+            />
+            <Item
+              to="/app/permissions"
+              label={t("nav.permissions")}
+              active={pathname.startsWith("/app/permissions")}
+              nested
+            />
+          </Accordion>
 
           {/* SETTINGS */}
-          <div>
-            <button
-              onClick={() => setSettingsOpen((v) => !v)}
-              className={clsx(
-                "w-full flex items-center justify-between px-4 py-2 text-xs uppercase tracking-wide transition",
-                "text-white hover:text-white/60"
+          <Accordion
+            title={t("settings.title")}
+            open={openMenu === "settings"}
+            onToggle={() => toggleMenu("settings")}
+          >
+            <Item
+              to="/app/settings/custom-fields/employees"
+              label={t("settings.customFields.employees")}
+              active={pathname.startsWith(
+                "/app/settings/custom-fields/employees"
               )}
-            >
-              <span>{t("settings.title")}</span>
-              <span
-                className={clsx(
-                  "transition-transform",
-                  settingsOpen ? "rotate-180" : "rotate-0"
-                )}
-              >
-                ▾
-              </span>
-            </button>
-
-            <div
-              className={clsx(
-                "mt-1 space-y-1 overflow-hidden transition-all duration-300",
-                settingsOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+              nested
+            />
+            <Item
+              to="/app/settings/custom-fields/clients"
+              label={t("settings.customFields.clients")}
+              active={pathname.startsWith(
+                "/app/settings/custom-fields/clients"
               )}
-            >
-              <Item
-                to="/app/settings/custom-fields/employees"
-                label={t("settings.customFields.employees")}
-                active={pathname.startsWith(
-                  "/app/settings/custom-fields/employees"
-                )}
-                nested
-              />
-
-              <Item
-                to="/app/settings/custom-fields/clients"
-                label={t("settings.customFields.clients")}
-                active={pathname.startsWith(
-                  "/app/settings/custom-fields/clients"
-                )}
-                nested
-              />
-
-              <Item
-                to="/app/settings/custom-fields/products"
-                label={t("settings.customFields.products")}
-                active={pathname.startsWith(
-                  "/app/settings/custom-fields/products"
-                )}
-                nested
-              />
-
-              <Item
-                to="/app/settings/custom-fields/inventory"
-                label={t("settings.customFields.inventory")}
-                active={pathname.startsWith(
-                  "/app/settings/custom-fields/inventory"
-                )}
-                nested
-              />
-            </div>
-          </div>
+              nested
+            />
+            <Item
+              to="/app/settings/custom-fields/products"
+              label={t("settings.customFields.products")}
+              active={pathname.startsWith(
+                "/app/settings/custom-fields/products"
+              )}
+              nested
+            />
+            <Item
+              to="/app/settings/custom-fields/inventory"
+              label={t("settings.customFields.inventory")}
+              active={pathname.startsWith(
+                "/app/settings/custom-fields/inventory"
+              )}
+              nested
+            />
+          </Accordion>
         </nav>
 
         {/* Footer */}
         <div className="px-6 py-4 text-sm text-white/60">
-          © Lumera ERP
+          {currentYear} © Lumera Core
         </div>
       </aside>
     </>
   );
 }
 
+/* =====================
+   Accordion
+===================== */
+function Accordion({
+  title,
+  open,
+  onToggle,
+  children,
+}: {
+  title: string;
+  open: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-4 py-2 text-xs uppercase tracking-wide text-white hover:text-white/60"
+      >
+        <span>{title}</span>
+        <span
+          className={clsx(
+            "transition-transform",
+            open ? "rotate-180" : "rotate-0"
+          )}
+        >
+          ▾
+        </span>
+      </button>
+
+      <div
+        className={clsx(
+          "mt-1 space-y-1 overflow-hidden transition-all duration-300",
+          open ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/* =====================
+   Item
+===================== */
 function Item({
   to,
   label,
@@ -259,7 +262,9 @@ function Item({
       className={clsx(
         "block rounded transition",
         nested ? "ml-4 px-4 py-2 text-sm" : "px-4 py-2",
-        active ? "bg-(--blue-muted)" : "hover:bg-(--blue-muted)/70"
+        active
+          ? "bg-(--blue-muted)"
+          : "hover:bg-(--blue-muted)/70"
       )}
     >
       {label}
