@@ -13,12 +13,16 @@ export default function Sidebar({ open, onClose }: Props) {
   const { pathname } = useLocation();
   const { t } = useTranslation();
 
-  // 🔹 Settings accordion state
+  // 🔹 Accordions
   const isSettingsRoute = pathname.startsWith("/app/settings");
+  const isInventoryRoute = pathname.startsWith("/app/inventory") || pathname.startsWith("/app/products");
+  const isAccessRoute =
+    pathname.startsWith("/app/roles") ||
+    pathname.startsWith("/app/permissions");
+
   const [settingsOpen, setSettingsOpen] = useState(isSettingsRoute);
-  const [inventoryOpen, setInventoryOpen] = useState(false);
-
-
+  const [inventoryOpen, setInventoryOpen] = useState(isInventoryRoute);
+  const [accessOpen, setAccessOpen] = useState(isAccessRoute);
 
   return (
     <>
@@ -66,11 +70,15 @@ export default function Sidebar({ open, onClose }: Props) {
               active={pathname.startsWith("/app/employees")}
             />
 
-
+            <Item
+              to="/app/users"
+              label={t("nav.users")}
+              active={pathname.startsWith("/app/users")}
+            />
           </div>
 
+          {/* INVENTORY */}
           <div>
-            {/* Header clickable */}
             <button
               onClick={() => setInventoryOpen((v) => !v)}
               className={clsx(
@@ -89,7 +97,6 @@ export default function Sidebar({ open, onClose }: Props) {
               </span>
             </button>
 
-            {/* Collapsible content */}
             <div
               className={clsx(
                 "mt-1 space-y-1 overflow-hidden transition-all duration-300",
@@ -110,7 +117,6 @@ export default function Sidebar({ open, onClose }: Props) {
                 nested
               />
 
-
               <Item
                 to="/app/inventory/movements"
                 label={t("inventory.movements.short_title")}
@@ -120,10 +126,50 @@ export default function Sidebar({ open, onClose }: Props) {
             </div>
           </div>
 
+          {/* ACCESS (Roles & Permissions) */}
+          <div>
+            <button
+              onClick={() => setAccessOpen((v) => !v)}
+              className={clsx(
+                "w-full flex items-center justify-between px-4 py-2 text-xs uppercase tracking-wide transition",
+                "text-white hover:text-white/60"
+              )}
+            >
+              <span>{t("nav.access")}</span>
+              <span
+                className={clsx(
+                  "transition-transform",
+                  accessOpen ? "rotate-180" : "rotate-0"
+                )}
+              >
+                ▾
+              </span>
+            </button>
+
+            <div
+              className={clsx(
+                "mt-1 space-y-1 overflow-hidden transition-all duration-300",
+                accessOpen ? "max-h-32 opacity-100" : "max-h-0 opacity-0"
+              )}
+            >
+              <Item
+                to="/app/roles"
+                label={t("nav.roles")}
+                active={pathname.startsWith("/app/roles")}
+                nested
+              />
+
+              <Item
+                to="/app/permissions"
+                label={t("nav.permissions")}
+                active={pathname.startsWith("/app/permissions")}
+                nested
+              />
+            </div>
+          </div>
 
           {/* SETTINGS */}
           <div>
-            {/* Header clickable */}
             <button
               onClick={() => setSettingsOpen((v) => !v)}
               className={clsx(
@@ -142,7 +188,6 @@ export default function Sidebar({ open, onClose }: Props) {
               </span>
             </button>
 
-            {/* Collapsible content */}
             <div
               className={clsx(
                 "mt-1 space-y-1 overflow-hidden transition-all duration-300",
@@ -166,22 +211,26 @@ export default function Sidebar({ open, onClose }: Props) {
                 )}
                 nested
               />
+
               <Item
                 to="/app/settings/custom-fields/products"
                 label={t("settings.customFields.products")}
-                active={pathname.startsWith("/app/settings/custom-fields/products")}
+                active={pathname.startsWith(
+                  "/app/settings/custom-fields/products"
+                )}
                 nested
               />
+
               <Item
                 to="/app/settings/custom-fields/inventory"
                 label={t("settings.customFields.inventory")}
-                active={pathname.startsWith("/app/settings/custom-fields/inventory")}
+                active={pathname.startsWith(
+                  "/app/settings/custom-fields/inventory"
+                )}
                 nested
               />
-
             </div>
           </div>
-
         </nav>
 
         {/* Footer */}
@@ -210,9 +259,7 @@ function Item({
       className={clsx(
         "block rounded transition",
         nested ? "ml-4 px-4 py-2 text-sm" : "px-4 py-2",
-        active
-          ? "bg-(--blue-muted)"
-          : "hover:bg-(--blue-muted)/70"
+        active ? "bg-(--blue-muted)" : "hover:bg-(--blue-muted)/70"
       )}
     >
       {label}
