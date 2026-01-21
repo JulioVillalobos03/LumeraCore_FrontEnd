@@ -34,7 +34,10 @@
         "users": "Users",
         "companies": "Companies",
         "products": "Products",
-        "inventory": "Inventory"
+        "inventory": "Inventory",
+        "roles": "Roles",
+        "permissions": "Permissions",
+        "access": "Access"
     },
     "profile": {
         "title": "Profile",
@@ -209,6 +212,87 @@
                 "in": "Stock in",
                 "out": "Stock out"
             }
+        }
+    },
+    "users": {
+        "title": "Users",
+        "subtitle": "Manage your company users",
+        "create": "Create user",
+        "empty": "No users found.",
+        "noRole": "No role assigned",
+        "columns": {
+            "name": "Name",
+            "email": "Email",
+            "role": "Role",
+            "status": "Status",
+            "actions": "Actions"
+        },
+        "status": {
+            "active": "Active",
+            "inactive": "Inactive"
+        },
+        "actions": {
+            "create": "Create user",
+            "edit": "Edit",
+            "assignRole": "Assign role",
+            "activate": "Activate",
+            "deactivate": "Deactivate"
+        },
+        "form": {
+            "title": "Create user",
+            "editTitle": "Edit user",
+            "name": "Name",
+            "email": "Email",
+            "password": "Password",
+            "role": "Role",
+            "selectRole": "Select a role",
+            "cancel": "Cancel",
+            "save": "Save",
+            "saving": "Saving..."
+        },
+        "errors": {
+            "loadFailed": "Failed to load users",
+            "createFailed": "Failed to create user",
+            "updateFailed": "Failed to update user",
+            "roleRequired": "Role is required"
+        }
+    },
+    "roles": {
+        "title": "Roles",
+        "subtitle": "Company role management",
+        "create": "Create role",
+        "empty": "No roles registered",
+        "columns": {
+            "name": "Role name"
+        },
+        "permissions": {
+            "title": "Role permissions",
+            "empty": "This role has no assigned permissions",
+            "assign": "Assign permissions"
+        },
+        "permissionsFor": "Permissions for ",
+        "noPermissions": "No permissions assigned",
+        "selectRole": "Select a role"
+    },
+    "permissions": {
+        "title": "Permissions",
+        "subtitle": "Create and assign permissions to roles",
+        "create": "Create permission",
+        "createTitle": "Create permission",
+        "createSubtitle": "Define a new permission_key for the system",
+        "empty": "No permissions found.",
+        "assign": "Assign to role",
+        "assignTitle": "Assign permission to role",
+        "selectRole": "Select a role",
+        "columns": {
+            "key": "Permission Key"
+        },
+        "form": {
+            "key": "Permission Key",
+            "keyPlaceholder": "e.g. users.read"
+        },
+        "errors": {
+            "createFailed": "Could not create the permission."
         }
     }
 }

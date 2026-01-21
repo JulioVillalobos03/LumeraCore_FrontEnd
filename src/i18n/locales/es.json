@@ -34,7 +34,10 @@
         "users": "Usuarios",
         "companies": "Empresas",
         "products": "Productos",
-        "inventory": "Inventario"
+        "inventory": "Inventario",
+        "roles": "Roles",
+        "permissions": "Permisos",
+        "access": "Acceso"
     },
     "profile": {
         "title": "Perfil",
@@ -209,6 +212,87 @@
                 "in": "Entrada",
                 "out": "Salida"
             }
+        }
+    },
+    "users": {
+        "title": "Usuarios",
+        "subtitle": "Gestiona los usuarios de tu empresa",
+        "create": "Crear usuario",
+        "empty": "No hay usuarios registrados.",
+        "noRole": "Sin rol asignado",
+        "columns": {
+            "name": "Nombre",
+            "email": "Correo",
+            "role": "Rol",
+            "status": "Estado",
+            "actions": "Acciones"
+        },
+        "status": {
+            "active": "Activo",
+            "inactive": "Inactivo"
+        },
+        "actions": {
+            "create": "Crear usuario",
+            "edit": "Editar",
+            "assignRole": "Asignar rol",
+            "activate": "Activar",
+            "deactivate": "Desactivar"
+        },
+        "form": {
+            "title": "Crear usuario",
+            "editTitle": "Editar usuario",
+            "name": "Nombre",
+            "email": "Correo",
+            "password": "Contraseña",
+            "role": "Rol",
+            "selectRole": "Selecciona un rol",
+            "cancel": "Cancelar",
+            "save": "Guardar",
+            "saving": "Guardando..."
+        },
+        "errors": {
+            "loadFailed": "No se pudieron cargar los usuarios",
+            "createFailed": "No se pudo crear el usuario",
+            "updateFailed": "No se pudo actualizar el usuario",
+            "roleRequired": "El rol es obligatorio"
+        }
+    },
+    "roles": {
+        "title": "Roles",
+        "subtitle": "Gestión de roles por empresa",
+        "create": "Crear rol",
+        "empty": "No hay roles registrados",
+        "columns": {
+            "name": "Nombre del rol"
+        },
+        "permissions": {
+            "title": "Permisos del rol",
+            "empty": "Este rol no tiene permisos asignados",
+            "assign": "Asignar permisos"
+        },
+        "permissionsFor": "Permisos para ",
+        "noPermissions": "Sin permisos asignados",
+        "selectRole": "Selecciona un rol"
+    },
+    "permissions": {
+        "title": "Permisos",
+        "subtitle": "Crea y asigna permisos a roles",
+        "create": "Crear permiso",
+        "createTitle": "Crear permiso",
+        "createSubtitle": "Define un nuevo permission_key para el sistema",
+        "empty": "No hay permisos registrados.",
+        "assign": "Asignar a rol",
+        "assignTitle": "Asignar permiso a rol",
+        "selectRole": "Selecciona un rol",
+        "columns": {
+            "key": "Permission Key"
+        },
+        "form": {
+            "key": "Permission Key",
+            "keyPlaceholder": "Ej: users.read"
+        },
+        "errors": {
+            "createFailed": "No se pudo crear el permiso."
         }
     }
 }

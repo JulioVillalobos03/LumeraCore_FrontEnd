@@ -15,6 +15,9 @@ import InventoryPage from "../modules/inventory/InventoryPage";
 import ProductDetailPage from "../modules/products/ProductDetailPage";
 import InventoryMovementsPage from "../modules/inventory/InventoryMovementsPage";
 import InventoryDetailPage from "../modules/inventory/InventoryDetailPage";
+import UsersPage from "../modules/users/UsersPage";
+import RolesPage from "../modules/roles/RolesPage";
+import PermissionsPage from "../modules/permissions/PermissionsPage";
 
 export default function AppRoutes() {
   return (
@@ -62,7 +65,10 @@ export default function AppRoutes() {
           <Route path="inventory" element={<InventoryPage />} />
           <Route path="inventory/:id" element={<InventoryDetailPage />} />
           <Route path="inventory/movements" element={<InventoryMovementsPage />} />
-          
+          <Route path="users" element={<UsersPage />} />
+          <Route path="roles" element={<RolesPage />} />
+          <Route path="permissions" element={<PermissionsPage />} />
+
           <Route
             path="settings/custom-fields/employees"
             element={<CustomFieldsPage entity="employees" />}
