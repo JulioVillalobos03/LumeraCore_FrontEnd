@@ -4,11 +4,11 @@ import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
 export default function DashboardLayout() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true); // abierto por defecto en desktop
 
   return (
     <div className="flex h-screen bg-(--bg-app)">
-      {/* Sidebar */}
+      {/* Sidebar (solo desktop ocupa espacio) */}
       <Sidebar
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
@@ -16,7 +16,7 @@ export default function DashboardLayout() {
 
       {/* Main content */}
       <div className="flex flex-col flex-1 overflow-hidden">
-        <Topbar onMenuClick={() => setSidebarOpen(true)} />
+        <Topbar onMenuClick={() => setSidebarOpen((v) => !v)} />
 
         <main className="flex-1 overflow-auto p-6">
           <Outlet />

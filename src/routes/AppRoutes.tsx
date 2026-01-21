@@ -7,7 +7,6 @@ import AppHome from "../modules/app/AppHome";
 import RegisterPage from "../modules/auth/RegisterPage";
 import CreateCompanyPage from "../modules/onboarding/CreateCompanyPage";
 import PublicRoute from "../auth/PublicRoute";
-import EmployeesPage from "../modules/employees/EmployeesPage";
 import EmployeeDetailPage from "../modules/employees/EmployeeDetailPage";
 import CustomFieldsPage from "../modules/custom-fields/CustomFieldsPage";
 import ProductsPage from "../modules/products/ProductsPage";
@@ -18,6 +17,9 @@ import InventoryDetailPage from "../modules/inventory/InventoryDetailPage";
 import UsersPage from "../modules/users/UsersPage";
 import RolesPage from "../modules/roles/RolesPage";
 import PermissionsPage from "../modules/permissions/PermissionsPage";
+import ClientsPage from "../modules/clients/ClientsPage";
+import ClientDetailPage from "../modules/clients/ClientDetailPage";
+import EmployeesPage from "../modules/employees/EmployeesPage";
 
 export default function AppRoutes() {
   return (
@@ -68,7 +70,8 @@ export default function AppRoutes() {
           <Route path="users" element={<UsersPage />} />
           <Route path="roles" element={<RolesPage />} />
           <Route path="permissions" element={<PermissionsPage />} />
-
+          <Route path="clients" element={<ClientsPage />} />
+          <Route path="clients/:id" element={<ClientDetailPage />} />
           <Route
             path="settings/custom-fields/employees"
             element={<CustomFieldsPage entity="employees" />}
